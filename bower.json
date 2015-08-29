@@ -9,7 +9,8 @@
   "description": "Class to create a marker in Google Maps Javascript API using a SVG file as the icon.",
   "keywords": [
     "marker",
-    "svg"
+    "svg",
+    "google maps"
   ],
   "license": "MIT"
 }
