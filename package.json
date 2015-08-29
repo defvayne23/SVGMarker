@@ -1,6 +1,6 @@
 {
   "name": "@defvayne23/svg-marker",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Class to create a marker in Google Maps Javascript API using a SVG file as the icon.",
   "main": "SVGMarker.js",
   "directories": {
