@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en-US"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="en-US"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en-US"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en-US"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>SVGMarker</title>
+
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+</head>
+
+<body>
+  <div id="map" style="width: 500px; height: 500px;"></div>
+
+  <script type="text/javascript" src="../SVGMarker.js"></script>
+  <script>
+  window.addEventListener('load', function() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 11,
+      center: new google.maps.LatLng(30.267074, -97.743473)
+    });
+
+    var marker = new SVGMarker({
+      map: map,
+      position: new google.maps.LatLng(30.282788, -97.731457),
+      icon: {
+        anchor: new google.maps.Point(30, 30.26),
+        size: new google.maps.Size(60,30.26),
+        url: './longhorn.svg'
+      }
+    })
+  });
+  </script>
+</body>
+</html>

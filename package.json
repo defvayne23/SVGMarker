@@ -1,0 +1,23 @@
+{
+  "name": "@defvayne23/svg-marker",
+  "version": "0.1.0",
+  "description": "Class to create a marker in Google Maps Javascript API using a SVG file as the icon.",
+  "main": "SVGMarker.js",
+  "directories": {
+    "example": "example"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/defvayne23/SVGMarker.git"
+  },
+  "keywords": [
+    "marker",
+    "svg"
+  ],
+  "author": "John Hoover",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/defvayne23/SVGMarker/issues"
+  },
+  "homepage": "https://github.com/defvayne23/SVGMarker#readme"
+}
