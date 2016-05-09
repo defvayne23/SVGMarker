@@ -89,6 +89,10 @@ SVGMarker.prototype.onAdd = function() {
   // Attach image to div
   this.div_.appendChild(img);
 
+  google.maps.event.addDomListener(this.div_, 'click', function() {
+    google.maps.event.trigger(self, 'click', self);
+  });
+
   // Add the element to the "overlayImage" pane.
   var panes = this.getPanes();
   panes.overlayImage.appendChild(this.div_);
