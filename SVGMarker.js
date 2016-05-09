@@ -98,7 +98,6 @@ SVGMarker.prototype.draw = function() {
   var overlayProjection = this.getProjection();
   var coords = overlayProjection.fromLatLngToDivPixel(this.options_.position);
 
-  console.log(this.options_);
   this.div_.style.left = (coords.x - this.options_.icon.anchor.x) + 'px';
   this.div_.style.top = (coords.y - this.options_.icon.anchor.y) + 'px';
 
@@ -132,6 +131,10 @@ SVGMarker.prototype.toggle = function() {
       this.hide();
     }
   }
+};
+
+SVGMarker.prototype.getPosition = function() {
+  return this.options_.position;
 };
 
 // Detach from map
