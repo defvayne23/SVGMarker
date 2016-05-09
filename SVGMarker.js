@@ -7,27 +7,33 @@ function SVGMarker(options) {
     icon: {
       anchor: new google.maps.Point(0, 0),
       size: new google.maps.Size(30,30),
-      url: ''
+      url: '',
+      text: {
+        content: '',
+        font: 'Helvetica, sans-serif',
+        color: '#000',
+        size: '10px',
+        weight: '400',
+        position: [0,0]
+      }
     },
     map: '',
     opacity: 1,
     position: '',
     title: '',
     visible: true,
-    zindex: ''
+    zindex: '',
   }
 
   // Merge options with default
   for(var key in options) {
     if(typeof default_[key] === 'object') {
       for(var key2 in options[key]) {
-        console.log(key, key2);
         if(options[key].hasOwnProperty(key2)) {
           default_[key][key2] = options[key][key2];
         }
       }
     } else {
-      console.log(key);
       if(options.hasOwnProperty(key)) {
         default_[key] = options[key];
       }
@@ -88,6 +94,20 @@ SVGMarker.prototype.onAdd = function() {
 
   // Attach image to div
   this.div_.appendChild(img);
+
+  if(this.options_.icon.text.content !== '') {
+    var text = document.createElement('span');
+    text.textContent = this.options_.icon.text.content;
+    text.style.fontFamily = this.options_.icon.text.font;
+    text.style.fontSize = this.options_.icon.text.size;
+    text.style.fontWeight = this.options_.icon.text.weight;
+    text.style.color = this.options_.icon.text.color;
+    text.style.position = 'absolute';
+    text.style.top = this.options_.icon.text.position[0] + 'px';
+    text.style.left = this.options_.icon.text.position[1] + 'px';
+    text.style.transform = 'translate(-50%, -50%)';
+    this.div_.appendChild(text);
+  }
 
   google.maps.event.addDomListener(this.div_, 'click', function() {
     google.maps.event.trigger(self, 'click', self);
