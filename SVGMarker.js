@@ -4,6 +4,7 @@ SVGMarker.prototype = new google.maps.OverlayView();
 /** @constructor */
 function SVGMarker(options) {
   var default_ = {
+    clickable: true,
     icon: {
       anchor: new google.maps.Point(0, 0),
       size: new google.maps.Size(30,30),
