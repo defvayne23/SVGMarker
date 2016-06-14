@@ -75,8 +75,8 @@ SVGMarker.prototype.onAdd = function() {
 
   // Add click event to container
   if(this.options_.clickable === true) {
-    google.maps.event.addDomListener(this.div_, 'click', function() {
-      google.maps.event.trigger(self, 'click');
+    google.maps.event.addDomListener(this.div_, 'click', function(event) {
+      google.maps.event.trigger(self, 'click', event);
     });
   }
 
