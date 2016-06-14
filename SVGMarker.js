@@ -1,4 +1,4 @@
-/*! SVGMarker v0.2.0 - https://github.com/defvayne23/SVGMarker */
+/*! SVGMarker v0.3.0 - https://github.com/defvayne23/SVGMarker */
 SVGMarker.prototype = new google.maps.OverlayView();
 
 /** @constructor */
