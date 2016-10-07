@@ -18,14 +18,15 @@ function SVGMarker(options) {
         size: '10px',
         weight: '400',
         position: [0,0]
-      }
+      },
+      html: ''
     },
     map: '',
     opacity: 1,
     position: '',
     title: '',
     visible: true,
-    zindex: '',
+    zIndex: '',
   }
 
   // Merge options with default
@@ -128,6 +129,7 @@ SVGMarker.prototype.onAdd = function() {
   img.src = this.get('icon').url;
   img.style.width = this.get('icon').size.width+'px';
   img.style.height = this.get('icon').size.height+'px';
+  img.style.display = 'block';
   img.setAttribute('alt', this.get('title'));
 
   // Attach image to div
@@ -145,6 +147,10 @@ SVGMarker.prototype.onAdd = function() {
     text.style.left = this.get('icon').text.position[1] + 'px';
     text.style.transform = 'translate(-50%, -50%)';
     this.get('container').appendChild(text);
+  }
+
+  if(this.get('icon').html !== '') {
+    container.appendChild( this.get('icon').html );
   }
 
   // Add the element to the "overlayImage" pane.
