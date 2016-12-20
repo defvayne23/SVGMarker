@@ -67,6 +67,11 @@ SVGMarker.prototype.onAdd = function() {
   container.style.borderWidth = '0px';
   container.style.position = 'absolute';
 
+  // Set zIndex
+  if(this.get('zIndex') !== '') {
+    container.style.zIndex = this.get('zIndex');
+  }
+
   // Set if marker is visible when added
   if(this.get('visible') === false) {
     container.style.visibility = 'hidden';
@@ -171,6 +176,12 @@ SVGMarker.prototype.draw = function() {
 SVGMarker.prototype.onRemove = function() {
   this.get('container').parentNode.removeChild(this.get('container'));
   this.set('container', null);
+};
+
+SVGMarker.prototype.setZIndex = function(zindex) {
+  if (this.get('container')) {
+    this.get('container').style.zIndex = zindex;
+  }
 };
 
 SVGMarker.prototype.hide = function() {
