@@ -117,17 +117,25 @@ SVGMarker.prototype.onAdd = function() {
       });
     });
 
-    google.maps.event.addDomListener(container, 'mouseup', function(){
+    google.maps.event.addDomListener(container, 'mouseup', function(event){
       google.maps.event.trigger(self, 'dragend', event);
       self.get('map').set('draggable',true);
       this.style.cursor='default';
       google.maps.event.removeListener(self.moveHandler);
     });
 
-    google.maps.event.addDomListener(this.get('map').getDiv(), 'mouseleave', function(){
-      google.maps.event.trigger(container, 'mouseup');
+    google.maps.event.addDomListener(this.get('map').getDiv(), 'mouseleave', function(event){
+      google.maps.event.trigger(container, 'mouseup', event);
     });
   }
+
+  google.maps.event.addDomListener(container, 'mouseover', function(event){
+    google.maps.event.trigger(self, 'mouseover', event);
+  });
+  
+  google.maps.event.addDomListener(container, 'mouseout', function(event){
+    google.maps.event.trigger(self, 'mouseout', event);
+  });
 
   // Create the img element
   var img = document.createElement('img');
