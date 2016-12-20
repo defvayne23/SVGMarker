@@ -45,9 +45,6 @@ function SVGMarker(options) {
   }
   this.setValues(default_);
 
-  // Define div container
-  this.div_ = null;
-
   // Explicitly call setMap on this overlay
   if('map' in options) {
     this.setMap(options.map);
@@ -132,7 +129,7 @@ SVGMarker.prototype.onAdd = function() {
   google.maps.event.addDomListener(container, 'mouseover', function(event){
     google.maps.event.trigger(self, 'mouseover', event);
   });
-  
+
   google.maps.event.addDomListener(container, 'mouseout', function(event){
     google.maps.event.trigger(self, 'mouseout', event);
   });
@@ -199,13 +196,13 @@ SVGMarker.prototype.hide = function() {
 };
 
 SVGMarker.prototype.show = function() {
-  if (this.div_) {
+  if (this.get('container')) {
     this.get('container').style.visibility = 'visible';
   }
 };
 
 SVGMarker.prototype.toggle = function() {
-  if (this.div_) {
+  if (this.get('container')) {
     if (this.get('container').style.visibility === 'hidden') {
       this.show();
     } else {
