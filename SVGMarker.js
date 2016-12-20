@@ -189,6 +189,12 @@ SVGMarker.prototype.setZIndex = function(zindex) {
   }
 };
 
+SVGMarker.prototype.setOpacity = function(opacity_value) {
+  if (this.get('container')) {
+    this.get('container').style.opacity = opacity_value;
+  }
+};
+
 SVGMarker.prototype.hide = function() {
   if (this.get('container')) {
     this.get('container').style.visibility = 'hidden';
