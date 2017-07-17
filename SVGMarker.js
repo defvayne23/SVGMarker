@@ -137,6 +137,7 @@ SVGMarker.prototype.onAdd = function() {
   // Create the img element
   var img = document.createElement('img');
   img.src = this.get('icon').url;
+  img.classList.add('SVGMarker');
   img.style.width = this.get('icon').size.width+'px';
   img.style.height = this.get('icon').size.height+'px';
   img.style.display = 'block';
@@ -192,6 +193,44 @@ SVGMarker.prototype.setZIndex = function(zindex) {
 SVGMarker.prototype.setOpacity = function(opacity_value) {
   if (this.get('container')) {
     this.get('container').style.opacity = opacity_value;
+  }
+};
+
+SVGMarker.prototype.setIcon = function(new_icon) {
+  var current_icon = this.get('icon');
+
+  // Make sure this isn't being called during init
+  if(current_icon) {
+    // Marge icon with default
+    for(var key in new_icon) {
+      if(typeof current_icon[key] === 'object') {
+        for(var key2 in new_icon[key]) {
+          if(new_icon[key].hasOwnProperty(key2)) {
+            current_icon[key][key2] = new_icon[key][key2];
+          }
+        }
+      } else {
+        if(new_icon.hasOwnProperty(key)) {
+          current_icon[key] = new_icon[key];
+        }
+      }
+    }
+    this.set('icon', current_icon);
+
+    // Update image
+    var img = this.get('container').querySelector('img.SVGMarker');
+    img.src = current_icon.url;
+    img.style.width = current_icon.size.width+'px';
+    img.style.height = current_icon.size.height+'px';
+
+    // Update anchor
+    var overlayProjection = this.getProjection();
+    var coords = overlayProjection.fromLatLngToDivPixel(this.get('position'));
+
+    this.get('container').style.left = (coords.x - current_icon.anchor.x) + 'px';
+    this.get('container').style.top = (coords.y - current_icon.anchor.y) + 'px';
+  } else {
+    this.set('icon', new_icon);
   }
 };
 
