@@ -19,6 +19,7 @@ function SVGMarker(options) {
         weight: '400',
         position: [0,0]
       },
+      class: 'SVGMarker',
       html: ''
     },
     map: '',
@@ -71,6 +72,13 @@ SVGMarker.prototype.onAdd = function() {
   container.style.border = 'none';
   container.style.borderWidth = '0px';
   container.style.position = 'absolute';
+
+  this.classList = container.classList;
+
+  // Set class
+  if(this.get('icon').class !== '') {
+    container.classList.add(this.get('icon').class);
+  }
 
   // Set zIndex
   if(this.get('zIndex') !== '') {
@@ -145,7 +153,7 @@ SVGMarker.prototype.onAdd = function() {
   // Create the img element
   var img = document.createElement('img');
   img.src = this.get('icon').url;
-  img.classList.add('SVGMarker');
+  img.classList.add('SVGMarkerIcon');
   img.style.width = this.get('icon').size.width+'px';
   img.style.height = this.get('icon').size.height+'px';
   img.style.display = 'block';
@@ -234,7 +242,7 @@ SVGMarker.prototype.setIcon = function(new_icon) {
     this.set('icon', current_icon);
 
     // Update image
-    var img = this.get('container').querySelector('img.SVGMarker');
+    var img = this.get('container').querySelector('img.SVGMarkerIcon');
     img.src = current_icon.url;
     img.style.width = current_icon.size.width+'px';
     img.style.height = current_icon.size.height+'px';
