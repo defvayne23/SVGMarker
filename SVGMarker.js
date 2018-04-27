@@ -33,8 +33,16 @@ function SVGMarker(options) {
   for(var key in options) {
     if(typeof default_[key] === 'object') {
       for(var key2 in options[key]) {
-        if(options[key].hasOwnProperty(key2)) {
-          default_[key][key2] = options[key][key2];
+        if(typeof default_[key][key2] === 'object') {
+          for(var key3 in options[key][key2]) {
+            if(options[key][key2].hasOwnProperty(key3)) {
+              default_[key][key2][key3] = options[key][key2][key3];
+            }
+          }
+        } else {
+          if(options[key].hasOwnProperty(key2)) {
+            default_[key][key2] = options[key][key2];
+          }
         }
       }
     } else {
@@ -205,8 +213,16 @@ SVGMarker.prototype.setIcon = function(new_icon) {
     for(var key in new_icon) {
       if(typeof current_icon[key] === 'object') {
         for(var key2 in new_icon[key]) {
-          if(new_icon[key].hasOwnProperty(key2)) {
-            current_icon[key][key2] = new_icon[key][key2];
+          if(typeof current_icon[key][key2] === 'object') {
+            for(var key3 in new_icon[key][key2]) {
+              if(new_icon[key][key2].hasOwnProperty(key3)) {
+                current_icon[key][key2][key3] = new_icon[key][key2][key3];
+              }
+            }
+          } else {
+            if(new_icon[key].hasOwnProperty(key2)) {
+              current_icon[key][key2] = new_icon[key][key2];
+            }
           }
         }
       } else {
