@@ -73,12 +73,12 @@ SVGMarker.prototype.onAdd = function() {
   container.style.borderWidth = '0px';
   container.style.position = 'absolute';
 
-  this.classList = container.classList;
-
   // Set class
   if(this.get('icon').class !== '') {
-    container.classList.add(this.get('icon').class);
+    container.setAttribute('class', this.get('icon').class);
   }
+
+  this.classList = container.classList;
 
   // Set zIndex
   if(this.get('zIndex') !== '') {
