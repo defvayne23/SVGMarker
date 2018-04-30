@@ -3,9 +3,9 @@ Google Maps JavaScript API overlay class to easily add markers with an SVG image
 
 ## Install
 
-**[Bower](http://bower.io/)**
+**[yarn](http://yarnpkg.com)**
 ```shell
-bower install svg-marker
+yarn add @defvayne23/svg-marker
 ```
 
 **[npm](https://www.npmjs.org/)**
